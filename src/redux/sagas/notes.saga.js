@@ -12,8 +12,19 @@ function* sendNote(action) {
   }
 }
 
+function* fetchNotes() {
+  try {
+    let response = yield axios.get('/api/note')
+
+    yield put({ type: 'SET_NOTES', payload: response.data})
+  } catch (err) {
+    console.log('Error in Get notes request', err);
+  }
+}
+
 function* notesSaga() {
   yield takeLatest('SEND_NOTE', sendNote);
+  yield takeLatest('FETCH_NOTES', fetchNotes)
 }
 
 export default notesSaga;
