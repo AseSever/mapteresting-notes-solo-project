@@ -13,6 +13,10 @@ function MyNoteCards(props) {
 
     const handleDelete = (id) => {
         console.log(`clickin ${id}`);
+        props.dispatch({
+            type: 'DELETE_NOTE',
+            payload: id
+        })
     }
 
     return (

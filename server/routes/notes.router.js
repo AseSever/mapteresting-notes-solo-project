@@ -10,7 +10,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     // GET route code here
     console.log('/note GET route');
     console.log('Is User logged in?', req.isAuthenticated());
-    console.log('user info', req.user)
+    console.log('user info', req.user);
 
     const queryText = 
         `SELECT * FROM "notes" 
@@ -20,7 +20,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
     .catch(err => {
         console.log('Error in myNotes GET route', err);
-    })
+        res.sendStatus(500);
+    });
 });
 
 // POST route for database
@@ -35,7 +36,26 @@ router.post('/', (req, res) => {
         .then(() => res.sendStatus(201))
         .catch(err => {
             console.log('Error in notes POST route', err);
-        })
+            res.sendStatus(500);
+        });
 });
+
+//DELETE route for notes
+router.delete('/:id', (req, res) => {
+    console.log(req.params.id);
+    let id = req.params.id
+    const deleteQuery = 
+        `DELETE FROM "notes"
+        WHERE "notes".id = $1;`
+
+    pool.query(deleteQuery, [id])
+        .then(() => res.sendStatus(200))
+        .catch(err => {
+            console.log('Error in notes Delete route', err);
+            res.sendStatus(500);
+        });
+
+});
+    
 
 module.exports = router;
