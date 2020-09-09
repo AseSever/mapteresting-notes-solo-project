@@ -7,13 +7,13 @@ function* sendNote(action) {
   try {
     yield axios.post('/api/note', action.payload)
 
-  } catch ( err ) {
+  } catch (err) {
     console.log('Error in sendNote POST saga', err);
   }
 }
 
 function* notesSaga() {
-    yield takeLatest('SEND_NOTE', sendNote);
-  }
-  
-  export default notesSaga;
+  yield takeLatest('SEND_NOTE', sendNote);
+}
+
+export default notesSaga;

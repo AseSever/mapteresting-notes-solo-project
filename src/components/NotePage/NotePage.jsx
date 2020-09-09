@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-
+import FormMap from '../FormMap/FormMap';
 
 class NotePage extends Component {
     state = {
@@ -9,48 +9,58 @@ class NotePage extends Component {
         lng: '',
         title: '',
         description: '',
+        public: false,
+        user_id: this.props.store.user.id
     };
 
-
+    handleNoteSubmit = (event) => {
+        event.preventDefault()
+        this.props.dispatch({ type: 'SEND_NOTE', payload: this.state})
+    }
 
     // handle change for note state
     handleInputChangeFor = (propertyName) => (event) => {
+        console.log(`In change for ${propertyName}`);
         this.setState({
+            ...this.state,
             [propertyName]: event.target.value,
         });
+
     };
 
     render() {
+        console.log(this.state);
         return (
-            <div>
-                <form>
+            <div style={{ margin: '0', alignItems: 'center'}}>
+                {/* <FormMap /> */}
+                <form onSubmit={this.handleNoteSubmit}>
                     <div>
                         <input
                             type="text"
                             name="lat"
                             placeholder="Latitude"
                             value={this.state.lat}
-                            required
+
                             onChange={this.handleInputChangeFor('lat')}
                         />
-                    </div>
-                    <div>
+                        
                         <input
                             type="text"
                             name="lng"
                             placeholder="Longitude"
                             value={this.state.lng}
-                            required
+
                             onChange={this.handleInputChangeFor('lng')}
                         />
                     </div>
-                    <div>
+                    
+                    <div style={{ marginTop: "4.5in"}}>
                         <input
                             type="text"
                             name="title"
                             placeholder="Title"
                             value={this.state.title}
-                            required
+
                             onChange={this.handleInputChangeFor('title')}
                         />
                     </div>
@@ -60,9 +70,30 @@ class NotePage extends Component {
                             name="description"
                             placeholder="Description"
                             value={this.state.description}
-                            required
+
                             onChange={this.handleInputChangeFor('description')}
                         />
+                    </div>
+                    <div>
+                        <label htmlFor="public">
+                            Public:
+                        <input
+                                type="radio"
+                                name="public"
+                                value="true"
+                                // checked={this.state.public === true}
+                                onChange={this.handleInputChangeFor('public')}
+                            />
+                        </label>
+                        <label htmlFor="public">
+                            Private:
+                        <input
+                                type="radio"
+                                name="public"
+                                value="false"
+                                onChange={this.handleInputChangeFor('public')}
+                            />
+                        </label>
                     </div>
                     <div>
                         <input className="btn" type="submit" name="submit" value="Save" />

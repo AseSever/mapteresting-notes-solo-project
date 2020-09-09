@@ -13,10 +13,10 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     // POST route code here
     console.log(req.body);
-    const insertIntoNotes = `INSERT INTO "notes" ('lat', 'lng', 'title', 'description', 'image', 'public' )
-                           VALUES ($1, $2, $3, $4, $5, $6);`
-    const values = [req.body.lat, req.body.lng, req.body.title, req.body.description, req.body.image, req.body.public]
-    pool.query(insertIntoNotes, [values])
+    const insertIntoNotes = `INSERT INTO "notes" ("lat", "lng", "title", "description", "image", "public", "user_id" )
+                             VALUES ($1, $2, $3, $4, $5, $6, $7);`
+
+    pool.query(insertIntoNotes, [req.body.lat, req.body.lng, req.body.title, req.body.description, req.body.image, req.body.public, req.body.user_id])
         .then(() => res.sendStatus(201))
         .catch(err => {
             console.log('Error in notes POST route', err);
