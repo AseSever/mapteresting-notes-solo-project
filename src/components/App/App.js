@@ -13,6 +13,7 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+import './App.css';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -21,8 +22,10 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import NotePage from '../NotePage/NotePage';
 import FormMap from '../FormMap/FormMap';
+import MyNotes from '../MyNotes/MyNotes';
 
-import './App.css';
+
+
 
 class App extends Component {
   componentDidMount() {
@@ -100,6 +103,14 @@ class App extends Component {
               component={NotePage} 
               
             />
+            <ProtectedRoute 
+              exact 
+              path="/mynotes" 
+              component={MyNotes} 
+              
+            />
+
+
             <Route exact path="/map" component={FormMap} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
