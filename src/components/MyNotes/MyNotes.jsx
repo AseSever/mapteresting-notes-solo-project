@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import MyNoteCards from '../MyNoteCards/MyNotecards';
 
@@ -16,12 +17,30 @@ class MyNotes extends Component {
       this.props.dispatch({ type: 'FETCH_NOTES' })
   }
 
+  handleDetails = (id) => {
+    console.log(`clicked note id: ${id}`);
+    this.props.dispatch
+        ({ 
+            type: 'FETCH_DETAILS', 
+            payload: id
+        })
+    this.props.history.push(`/details/${id}`)
+  }
+
+  
+
   render() {
     return (
       <div>
         <h2>{this.state.heading}</h2>
         {this.props.store.notes.map((note, i) => {
-            return(<MyNoteCards key={i} note={note}/>)
+            return(
+                <MyNoteCards 
+                    key={i} 
+                    note={note} 
+                    handleDetails={this.handleDetails}
+                />
+            )
         })}
 
       </div>
@@ -29,4 +48,6 @@ class MyNotes extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(MyNotes);
+export default withRouter(
+    connect(mapStoreToProps)(MyNotes)
+);

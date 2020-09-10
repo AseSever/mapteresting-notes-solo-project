@@ -23,6 +23,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import NotePage from '../NotePage/NotePage';
 import FormMap from '../FormMap/FormMap';
 import MyNotes from '../MyNotes/MyNotes';
+import MyNoteDetails from '../MyNoteDetails/MyNoteDetails';
 
 
 
@@ -97,25 +98,33 @@ class App extends Component {
               component={LandingPage}
               authRedirect="/user"
             />
-            <ProtectedRoute 
-              exact 
-              path="/note-create" 
-              component={NotePage} 
-              
+            <ProtectedRoute
+              exact
+              path="/note-create"
+              component={NotePage}
+
             />
-            <ProtectedRoute 
-              exact 
-              path="/mynotes" 
-              component={MyNotes} 
-              
+            <ProtectedRoute
+              exact
+              path="/mynotes"
+              component={MyNotes}
             />
+            <ProtectedRoute
+              path="/details/:id"
+              component={MyNoteDetails}
+            />
+
+            {/* <ProtectedRoute
+              path="/edit-details/:id"
+              component={MyNoteDetails}
+            /> */}
 
 
             <Route exact path="/map" component={FormMap} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-            
+
           <Footer />
         </div>
       </Router>
