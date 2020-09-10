@@ -6,7 +6,7 @@ const apiKey = process.env.REACT_APP_GOOGLE_MAPS_APIKEY
 
 const mapStyles = {
     width: '80%',
-    height: '350px',
+    height: '200px',
     margin: '40px'
 };
 
