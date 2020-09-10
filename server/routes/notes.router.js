@@ -5,7 +5,7 @@ const {
     rejectUnauthenticated, 
   } = require('../modules/authentication-middleware');
 
-
+// router to get notes for My Notes page
 router.get('/', rejectUnauthenticated, (req, res) => {
     // GET route code here
     console.log('/note GET route');
@@ -23,6 +23,26 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500);
     });
 });
+
+// route for My Notes Details page
+router.get('/details/:id', rejectUnauthenticated, (req,res) => {
+    console.log('/note/details GET route');
+    console.log('Is User logged in?', req.isAuthenticated());
+    console.log('user info', req.user);
+
+    const queryText = 
+        `SELECT * FROM "notes"
+        WHERE "notes".id = $1;`
+    
+    pool.query(queryText, [req.params.id])
+        .then(result => {
+            res.send(result.rows)
+        })
+        .catch(err => {
+            console.log('Error in get details route', err);
+            res.sendStatus(500)
+        });
+})
 
 // POST route for database
 router.post('/', (req, res) => {
@@ -54,8 +74,8 @@ router.delete('/:id', (req, res) => {
             console.log('Error in notes Delete route', err);
             res.sendStatus(500);
         });
-
 });
     
+
 
 module.exports = router;

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import FormMap from '../FormMap/FormMap';
-
+import MyNotesMap from '../MyNotesMap/MyNotesMap';
 
 // MATERIAL-UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,7 +15,7 @@ import {
     Typography,
 
 } from '@material-ui/core';
-import MyNotesMap from '../MyNotesMap/MyNotesMap';
+
 
 
 
@@ -46,9 +46,7 @@ function MyNoteCards(props) {
         })
     }
 
-    const handleDetails = (id) => {
-        console.log(`clickin details ${id}`);
-    }
+
 
     return (
         <div>
@@ -56,8 +54,8 @@ function MyNoteCards(props) {
                 <CardHeader
                     title={props.note.title}
                 />
-                <CardActionArea>
-                    <CardContent onClick={() => handleDetails(props.note.id)}>
+                <CardActionArea onClick={() => props.handleDetails(props.note.id)}>
+                    <CardContent>
                         
                         <Typography variant="body2" color="textSecondary" component="p">
                             {props.note.description}
