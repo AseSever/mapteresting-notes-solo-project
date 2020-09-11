@@ -28,7 +28,7 @@ function TemplateFunction(props) {
                 <TextField
                     id="outlined-multiline-flexible"
                     multiline
-                    rowsMax={4}
+                    rows={2}
                     // value={props.editFields.descripton}
                     // onChange={handleChange}
                     variant="outlined"
