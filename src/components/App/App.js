@@ -24,6 +24,7 @@ import NotePage from '../NotePage/NotePage';
 import FormMap from '../FormMap/FormMap';
 import MyNotes from '../MyNotes/MyNotes';
 import MyNoteDetails from '../MyNoteDetails/MyNoteDetails';
+import Edit from '../Edit/Edit';
 
 
 
@@ -114,10 +115,10 @@ class App extends Component {
               component={MyNoteDetails}
             />
 
-            {/* <ProtectedRoute
+            <ProtectedRoute
               path="/edit-details/:id"
-              component={MyNoteDetails}
-            /> */}
+              component={Edit}
+            />
 
 
             <Route exact path="/map" component={FormMap} />

@@ -77,7 +77,7 @@ function MyNoteDetails(props) {
                         <Button 
                             variant="contained" 
                             color="secondary"
-                            onClick={() => props.handleEdit(details.id)}
+                            onClick={() => props.history.push(`/edit-details/${details.id}`)}
                         >
                             Edit
                         </Button>
