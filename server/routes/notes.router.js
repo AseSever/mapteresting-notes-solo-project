@@ -42,10 +42,10 @@ router.get('/details/:id', rejectUnauthenticated, (req,res) => {
             console.log('Error in get details route', err);
             res.sendStatus(500)
         });
-})
+});
 
 // POST route for database
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     // POST route code here
     console.log(req.body);
     const insertIntoNotes = 
@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
 });
 
 //DELETE route for notes
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log(req.params.id);
     let id = req.params.id
     const deleteQuery = 

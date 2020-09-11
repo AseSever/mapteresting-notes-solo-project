@@ -53,7 +53,7 @@ function MyNoteDetails(props) {
                     alignItems="center"
                 >
                     <Grid item xs={12}>
-                        <Typography>
+                        <Typography align="center">
                             {latlng}
                         </Typography>
                     </Grid>

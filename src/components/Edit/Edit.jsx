@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import EditFormTextField from '../EditFormTextField/EditFormTextField';
 
 // MATERIAL-UI
-import { } from '@material-ui/core';
+import {
+    Button,
+    TextField,
+    Radio,
+} from '@material-ui/core';
+
 
 class Edit extends Component {
     state = {
@@ -13,17 +19,29 @@ class Edit extends Component {
     componentDidMount = () => {
         let id = this.props.match.params.id
         // create new reducer specifically for editing details
-        // this.props.dispatch({ type: 'FETCH_EDIT_DETAILS', payload: id })
+        this.props.dispatch({ type: 'FETCH_EDIT_DETAILS', payload: id })
+    }
+
+
+    handleEditChange = (propertyValue) => {
+        console.log(`Handle change of ${propertyValue}`);
+        this.props.dispatch({ type: 'SET_EDIT', payload: propertyValue})
     }
 
     render() {
-        console.log(this.props.store.noteDetails);
+        // variable for more concise data
+        const editFields = this.props.store.edit
+        console.log(editFields);
+
         return (
             <div>
                 <h2>{this.state.heading}</h2>
                 <form>
-                    <input
-                        value={this.props.store.noteDetails.description}
+
+                    <EditFormTextField
+                        editFields={editFields}
+                        newEdit={this.state.newEdit}
+                        handleEditChange={this.handleEditChange}
                     />
                 </form>
             </div>
