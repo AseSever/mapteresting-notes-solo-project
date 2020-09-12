@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     paper: {
-        minHeight: 350,
+        maxHeight: 500,
         maxWidth: 380,
         margin: 'auto',
     }
@@ -42,7 +42,7 @@ function MyNoteDetails(props) {
         props.dispatch({ type: 'FETCH_DETAILS', payload: id })
     }, []);
 
-    
+
 
     return (
         <div className={classes.root}>
@@ -53,7 +53,7 @@ function MyNoteDetails(props) {
                     alignItems="center"
                 >
                     <Grid item xs={12}>
-                        <Typography>
+                        <Typography align="center">
                             {latlng}
                         </Typography>
                     </Grid>
@@ -63,33 +63,43 @@ function MyNoteDetails(props) {
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Typography>
+                        <Typography align="center">
                             {details.description}
                         </Typography>
                     </Grid>
                 </Grid>
                 <Grid
                     container
-                    justify="space-around"
-                    alignItems="flex-end"
+                    justify="center"
+                    alignItems="center"
                 >
-                    <Grid item>
-                        <Button 
-                            variant="contained" 
+                    <Grid item >
+                        <Button
+                            variant="contained"
                             color="secondary"
-                            onClick={() => props.handleEdit(details.id)}
+                            onClick={() => props.history.push(`/edit-details/${details.id}`)}
+                            size="small"
                         >
                             Edit
                         </Button>
-                    <Grid item>
-                        <Button>
+                    </Grid>
+                        &nbsp;
+                        &nbsp;
+                    <Grid item >
+                        <Button
+                            variant="contained"
+                            onClick={() => props.history.push('/mynotes')}
+                            size="small"
+
+                        >
                             Back
                         </Button>
-                        </Grid>
                     </Grid>
+                        &nbsp;
+                        &nbsp;
                 </Grid>
             </Paper>
-        </div>
+        </div >
     );
 
 }
