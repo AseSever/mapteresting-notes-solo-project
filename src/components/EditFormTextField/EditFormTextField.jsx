@@ -4,7 +4,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // MATERIAL-UI
 import {
-    TextField,
+    TextField, FormControlLabel, FormLabel,
 } from '@material-ui/core';
 
 function TemplateFunction(props) {
@@ -13,25 +13,34 @@ function TemplateFunction(props) {
     const [heading, setHeading] = useState('Functional Component');
 
 
-
+    console.log(props.editFields);
     return (
         <div>
             <div>
+                <FormLabel htmlFor="title">
+                    Title
+                </FormLabel>
                 <TextField
                     id="outlined-basic"
                     variant="outlined"
                     value={props.editFields.title}
-                    onChange={() => props.handleEditChange(props.editFields.title)}
+                    name="title"
+                    onChange={(event) => props.handleEditChange(event)}
                 />
             </div>
             <div>
+                <FormLabel htmlFor="description">
+                    Description
+                </FormLabel>
                 <TextField
-                    id="outlined-multiline-flexible"
+                    id="outlined-multiline-static"
+                    variant="outlined"
                     multiline
                     rows={2}
-                    // value={props.editFields.descripton}
-                    // onChange={handleChange}
-                    variant="outlined"
+                    maxRows={3}
+                    value={props.editFields.description}
+                    name="description"
+                    onChange={(event) => props.handleEditChange(event)}
                 />
             </div>
         </div>

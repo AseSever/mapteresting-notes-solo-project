@@ -8,6 +8,9 @@ import {
     Button,
     TextField,
     Radio,
+    RadioGroup,
+    FormControlLabel,
+    FormControl,
 } from '@material-ui/core';
 
 
@@ -19,13 +22,31 @@ class Edit extends Component {
     componentDidMount = () => {
         let id = this.props.match.params.id
         // create new reducer specifically for editing details
-        this.props.dispatch({ type: 'FETCH_EDIT_DETAILS', payload: id })
+        this.props.dispatch({ type: 'FETCH_EDIT_DETAILS', payload: id });
     }
 
 
-    handleEditChange = (propertyValue) => {
-        console.log(`Handle change of ${propertyValue}`);
-        this.props.dispatch({ type: 'SET_EDIT', payload: propertyValue})
+    handleEditChange = (event) => {
+        console.log(`Handle change of ${event.target.name}`);
+        this.props.dispatch(
+            {
+                type: 'SET_EDIT',
+                payload: { key: event.target.name, value: event.target.value }
+            });
+    }
+
+    handleEditSubmit = (event) => {
+        event.preventDefault();
+        this.props.dispatch(
+            {
+                type: 'UPDATE_NOTE',
+                payload: this.props.store.edit,
+            });
+        this.props.history.push('/mynotes');
+    }
+
+    handleCancel = (event) => {
+        this.props.history.push('/mynotes')
     }
 
     render() {
@@ -36,13 +57,51 @@ class Edit extends Component {
         return (
             <div>
                 <h2>{this.state.heading}</h2>
-                <form>
+                <form onSubmit={this.handleEditSubmit}>
+
+                    <FormControl>
+                        <RadioGroup row aria-label="position" name="position" defaultValue="top">
+                            <FormControlLabel
+                                value="true"
+                                name="public"
+                                onChange={(event) => this.handleEditChange(event)}
+                                control={<Radio color="primary" />}
+                                label="Public"
+                                labelPlacement="start"
+                            />
+                            <FormControlLabel
+                                value="false"
+                                name="public"
+                                onChange={(event) => this.handleEditChange(event)}
+                                control={<Radio color="primary" />}
+                                label="Private"
+                                labelPlacement="start"
+                            />
+                        </RadioGroup>
+                    </FormControl>
 
                     <EditFormTextField
                         editFields={editFields}
-                        newEdit={this.state.newEdit}
                         handleEditChange={this.handleEditChange}
                     />
+                    <div>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                        >
+                            Save
+                        </Button>
+                    </div>
+                    <div>
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            onClick={this.handleCancel}
+                        >
+                            Cancel
+                        </Button>
+                    </div>
                 </form>
             </div>
         );

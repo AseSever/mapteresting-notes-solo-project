@@ -114,7 +114,6 @@ class App extends Component {
               path="/details/:id"
               component={MyNoteDetails}
             />
-
             <ProtectedRoute
               path="/edit-details/:id"
               component={Edit}
