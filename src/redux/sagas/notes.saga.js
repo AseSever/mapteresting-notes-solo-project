@@ -31,6 +31,7 @@ function* sendNote(action) {
   try {
     yield axios.post('/api/note', action.payload)
 
+    yield put({ type: 'FETCH_NOTES' })
   } catch (err) {
     console.log('Error in sendNote POST saga', err);
   }

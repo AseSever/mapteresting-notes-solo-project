@@ -23,8 +23,12 @@ const useStyles = makeStyles({
     root: {
         minWidth: 345,
         maxWidth: 370,
-        
+        margin: 'auto',
+        marginTop: 10,
     },
+    button: {
+        alignItems: 'right'
+    }
 });
 
 function MyNoteCards(props) {
@@ -66,7 +70,12 @@ function MyNoteCards(props) {
                     <Typography variant="body2" color="textSecondary" component="p">
                         {latlng}
                     </Typography>
-                    <button onClick={() => handleDelete(props.note.id)}>Delete</button>
+                    <button
+                        className={classes.button} 
+                        onClick={() => handleDelete(props.note.id)}
+                    >
+                        Delete
+                    </button>
                 </CardActions>
             </Card>
 

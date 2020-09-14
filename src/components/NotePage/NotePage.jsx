@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import FormMap from '../FormMap/FormMap';
+import MapContainer from '../MapContainer/MapContainer';
 
 class NotePage extends Component {
     state = {
@@ -14,8 +14,9 @@ class NotePage extends Component {
     };
 
     handleNoteSubmit = (event) => {
-        event.preventDefault()
-        this.props.dispatch({ type: 'SEND_NOTE', payload: this.state})
+        event.preventDefault();
+        this.props.dispatch({ type: 'SEND_NOTE', payload: this.state});
+        this.props.history.push('/mynotes');
     }
 
     // handle change for note state
@@ -25,14 +26,13 @@ class NotePage extends Component {
             ...this.state,
             [propertyName]: event.target.value,
         });
-
-    };
+    }
 
     render() {
         console.log(this.state);
         return (
             <div style={{ margin: '0', alignItems: 'center'}}>
-                {/* <FormMap /> */}
+                
                 <form onSubmit={this.handleNoteSubmit}>
                     <div>
                         <input
@@ -40,7 +40,6 @@ class NotePage extends Component {
                             name="lat"
                             placeholder="Latitude"
                             value={this.state.lat}
-
                             onChange={this.handleInputChangeFor('lat')}
                         />
                         
@@ -49,12 +48,11 @@ class NotePage extends Component {
                             name="lng"
                             placeholder="Longitude"
                             value={this.state.lng}
-
                             onChange={this.handleInputChangeFor('lng')}
                         />
                     </div>
-                    
-                    <div style={{ marginTop: "4.5in"}}>
+                    <MapContainer handleInputChangeFor={this.handleInputChangeFor}/>
+                    <div >
                         <input
                             type="text"
                             name="title"

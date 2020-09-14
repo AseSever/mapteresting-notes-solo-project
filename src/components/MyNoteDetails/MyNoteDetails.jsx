@@ -11,13 +11,13 @@ import {
     Typography,
 } from '@material-ui/core';
 
-
+const apiKey = process.env.REACT_APP_GOOGLE_MAPS_APIKEY
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
     paper: {
-        maxHeight: 500,
+        maxHeight: 700,
         maxWidth: 380,
         margin: 'auto',
     }
@@ -47,6 +47,9 @@ function MyNoteDetails(props) {
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
+                <div>
+                    <img src={`https://maps.googleapis.com/maps/api/staticmap?size=360x450&scale=2&format=png&markers=size:normal%7Ccolor:blue%7C${details.lat},${details.lng}&key=${apiKey}`} alt="" />
+                </div>
                 <Grid
                     container
                     justify="space-around"
@@ -90,7 +93,6 @@ function MyNoteDetails(props) {
                             variant="contained"
                             onClick={() => props.history.push('/mynotes')}
                             size="small"
-
                         >
                             Back
                         </Button>

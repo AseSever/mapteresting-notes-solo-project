@@ -25,6 +25,7 @@ import FormMap from '../FormMap/FormMap';
 import MyNotes from '../MyNotes/MyNotes';
 import MyNoteDetails from '../MyNoteDetails/MyNoteDetails';
 import Edit from '../Edit/Edit';
+import MapContainer from '../MapContainer/MapContainer';
 
 
 
@@ -120,7 +121,7 @@ class App extends Component {
             />
 
 
-            <Route exact path="/map" component={FormMap} />
+            <Route exact path="/map" component={MapContainer} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
