@@ -12,6 +12,8 @@ const editDetailValues = (state = {}, action) => {
             };
         case 'SET_EDIT_DETAILS':
             return action.payload;
+        case 'CANCEL_EDIT':
+            return {};
         default:
             return state
     }

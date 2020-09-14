@@ -46,7 +46,12 @@ class Edit extends Component {
     }
 
     handleCancel = (event) => {
-        this.props.history.push('/mynotes')
+        event.preventDefault();
+        this.props.dispatch(
+            {
+                type: 'CANCEL_EDIT'
+            });
+        this.props.history.push('/mynotes');
     }
 
     render() {

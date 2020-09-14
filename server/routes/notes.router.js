@@ -32,9 +32,9 @@ router.get('/details/:id', rejectUnauthenticated, (req,res) => {
 
     const queryText = 
         `SELECT * FROM "notes"
-        WHERE "notes".id = $1;`
+        WHERE "notes".id = $1 and "notes".user_id = $2;`
     
-    pool.query(queryText, [req.params.id])
+    pool.query(queryText, [req.params.id, req.user.id])
         .then(result => {
             res.send(result.rows)
         })
@@ -66,9 +66,9 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
     let id = req.params.id
     const deleteQuery = 
         `DELETE FROM "notes"
-        WHERE "notes".id = $1;`
+        WHERE "notes".id = $1 and "notes".user_id = $2;`
 
-    pool.query(deleteQuery, [id])
+    pool.query(deleteQuery, [id, req.user.id])
         .then(() => res.sendStatus(200))
         .catch(err => {
             console.log('Error in notes Delete route', err);
