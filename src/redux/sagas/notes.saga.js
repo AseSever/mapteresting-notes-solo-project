@@ -1,13 +1,24 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
+// saga to fetch public noted for home page
+function* publicNotes() {
+  try {
+    let response = axios.get('/api/note/public');
+
+    yield put({ type: 'SET_PUBLIC_NOTES', payload: response.data});
+  } catch (err) {
+    console.log('Error in publicNotes saga', err);
+  }
+}
+
 // saga for fetching a specific note detail
 function* noteDetails(action) {
-  console.log(action.payload)
+  console.log(action.payload);
   try {
-    let response = yield axios.get(`/api/note/details/${action.payload}`)
+    let response = yield axios.get(`/api/note/details/${action.payload}`);
     console.log(response.data);
-    yield put({ type: 'SET_DETAILS', payload: response.data[0]})
+    yield put({ type: 'SET_DETAILS', payload: response.data[0]});
   } catch (err) {
     console.log('Error in notDetails saga', err);
   }
@@ -40,9 +51,9 @@ function* sendNote(action) {
 // saga to get notes for My Notes page
 function* fetchNotes() {
   try {
-    let response = yield axios.get('/api/note')
+    let response = yield axios.get('/api/note');
 
-    yield put({ type: 'SET_NOTES', payload: response.data })
+    yield put({ type: 'SET_NOTES', payload: response.data });
   } catch (err) {
     console.log('Error in Get notes request', err);
   }
@@ -53,6 +64,7 @@ function* notesSaga() {
   yield takeLatest('FETCH_NOTES', fetchNotes);
   yield takeLatest('DELETE_NOTE', deleteNote);
   yield takeLatest('FETCH_DETAILS', noteDetails);
+  yield takeLatest('FETCH_PUBLIC_NOTES', publicNotes);
 }
 
 export default notesSaga;

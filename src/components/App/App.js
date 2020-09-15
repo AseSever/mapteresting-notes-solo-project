@@ -21,7 +21,6 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import NotePage from '../NotePage/NotePage';
-import FormMap from '../FormMap/FormMap';
 import MyNotes from '../MyNotes/MyNotes';
 import MyNoteDetails from '../MyNoteDetails/MyNoteDetails';
 import Edit from '../Edit/Edit';
