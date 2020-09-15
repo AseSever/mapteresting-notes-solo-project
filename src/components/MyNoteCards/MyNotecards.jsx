@@ -1,8 +1,7 @@
 import React, { useState, } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import FormMap from '../FormMap/FormMap';
-import MyNotesMap from '../MyNotesMap/MyNotesMap';
+
 
 // MATERIAL-UI
 import { makeStyles } from '@material-ui/core/styles';

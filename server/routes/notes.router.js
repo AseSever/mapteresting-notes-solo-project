@@ -5,6 +5,23 @@ const {
     rejectUnauthenticated, 
   } = require('../modules/authentication-middleware');
 
+// route to get public notes for home page
+router.get('/public', rejectUnauthenticated, (req, res) => {
+
+    const queryText = 
+        `SELECT * FROM "notes"
+        WHERE "notes".public = 'true'
+        ORDER BY date_created;`
+
+    pool.query(queryText).then(result => {
+        res.send(result.rows)
+    })
+    .catch(err => {
+        console.log('Error in public note route', err);
+        res.sendStatus(500);
+    });
+});
+
 // router to get notes for My Notes page
 router.get('/', rejectUnauthenticated, (req, res) => {
     // GET route code here

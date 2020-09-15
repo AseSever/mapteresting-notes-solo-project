@@ -9,7 +9,7 @@ function MapContainer(props) {
 
     
     const [currentPosition, setCurrentPosition] = useState({});
-
+    // on page load will 
     const success = (position) => {
         const currentPosition = {
             lat: position.coords.latitude,
@@ -34,14 +34,14 @@ function MapContainer(props) {
         margin: 'auto',
     };
 
-    const defaultCenter = {
-        lat: 44.9355463,
-        lng: -93.2827433
-    }
+    // const defaultCenter = {
+    //     lat: 44.9355463,
+    //     lng: -93.2827433
+    // }
     return (
         <div>
-            
-            {JSON.stringify(currentPosition)}
+            {JSON.stringify(currentPosition.lat && currentPosition.lat.toFixed(7))}
+            {JSON.stringify(currentPosition.lng && currentPosition.lng.toFixed(7))}
             <LoadScript
                 googleMapsApiKey={apiKey}>
                 <GoogleMap
@@ -54,7 +54,6 @@ function MapContainer(props) {
                             <Marker
                                 position={currentPosition}
                                 onDragEnd={(event) => onMarkerDragEnd(event)}
-                                // onChange={() => props.handleInputChangeFor(currentPosition)}
                                 draggable={true} /> : 
                                 null
                     }
