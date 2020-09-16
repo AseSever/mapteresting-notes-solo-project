@@ -23,8 +23,6 @@ const useStyles = makeStyles((theme) => ({
     textField: {
         minWidth: 300,
         maxWidth: '90%',
-
-
     },
     latlngField: {
         width: '11.4em',
@@ -33,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
         minWidth: '80%',
         maxWidth: '95%',
         margin: 'auto',
-        // paddingLeft: 15,
     },
 }));
 

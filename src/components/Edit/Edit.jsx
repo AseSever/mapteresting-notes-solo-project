@@ -21,8 +21,11 @@ class Edit extends Component {
 
     componentDidMount = () => {
         let id = this.props.match.params.id
-        // create new reducer specifically for editing details
-        this.props.dispatch({ type: 'FETCH_EDIT_DETAILS', payload: id });
+        // created new reducer specifically for editing details
+        this.props.dispatch(
+            { 
+                type: 'FETCH_EDIT_DETAILS', payload: id 
+            });
     }
 
 

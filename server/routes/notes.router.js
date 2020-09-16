@@ -9,10 +9,12 @@ const {
 router.get('/public', rejectUnauthenticated, (req, res) => {
 
     const queryText = 
-        `SELECT "user".username, lat, lng, title, image, date_created FROM "notes"
+        `SELECT COUNT("likes".notes_id), "user".username, title, image, date_created, public FROM "notes"
         JOIN "user" ON "notes".user_id = "user".id
+        FULL OUTER JOIN "likes" ON "notes".id = "likes".notes_id
         WHERE "notes".public = 'true'
-        ORDER BY date_created;`
+        GROUP BY "likes".notes_id, "notes".id, "user".username
+        ORDER BY "date_created";`
 
     pool.query(queryText).then(result => {
         res.send(result.rows)

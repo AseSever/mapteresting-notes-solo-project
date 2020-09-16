@@ -4,12 +4,11 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // MATERIAL-UI
 import {
-    TextField, FormControlLabel, FormLabel,
+    TextField, FormLabel,
 } from '@material-ui/core';
 
 function TemplateFunction(props) {
-    // Using hooks we're creating local state for a "heading" variable with
-    // a default value of 'Functional Component'
+   
     const [heading, setHeading] = useState('Functional Component');
 
 
