@@ -4,7 +4,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 // saga to fetch public noted for home page
 function* publicNotes() {
   try {
-    let response = axios.get('/api/note/public');
+    let response = yield axios.get('/api/note/public');
 
     yield put({ type: 'SET_PUBLIC_NOTES', payload: response.data});
   } catch (err) {

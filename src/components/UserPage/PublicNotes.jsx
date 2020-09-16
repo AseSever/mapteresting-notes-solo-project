@@ -2,19 +2,58 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name PublicNotes with the name for the new component.
-function PublicNotes(props) {
-  // Using hooks we're creating local state for a "heading" variable with
-  // a default value of 'Functional Component'
-  const [heading, setHeading] = useState('Functional Component');
+import moment from 'moment';
 
-  return (
-    <div>
-      <h2>{heading}</h2>
-    </div>
-  );
+// MATERIAL-UI
+import { makeStyles } from '@material-ui/core/styles';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import {
+    Card,
+    CardHeader,
+    CardActionArea,
+    CardMedia,
+    CardActions,
+    CardContent,
+    Typography,
+    IconButton,
+} from '@material-ui/core';
+
+
+const useStyles = makeStyles({
+    root: {
+        minWidth: '80%',
+        maxWidth: '85%',
+        margin: 'auto',
+        marginTop: 10,
+    },
+});
+
+function PublicNotes(props) {
+    const classes = useStyles();
+
+
+    return (
+        <div>
+            <Card className={classes.root}>
+                <CardHeader
+                    align="center"
+                    title={props.note.title}
+                    subheader={props.note.username}
+                />
+                <CardContent>
+
+                </CardContent>
+                <CardActions>
+                    <IconButton>
+                        <FavoriteIcon />
+                    </IconButton>
+                    <Typography paragraph>
+                        {moment(props.note.date_created).format('ll')}
+                    </Typography>
+                </CardActions>
+            </Card>
+        </div>
+    );
 }
 
 export default connect(mapStoreToProps)(PublicNotes);

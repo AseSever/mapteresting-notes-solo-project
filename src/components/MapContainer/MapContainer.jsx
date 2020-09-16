@@ -30,7 +30,7 @@ function MapContainer(props) {
 
     const mapStyles = {
         height: '400px',
-        width: '80%',
+        width: '90%',
         margin: 'auto',
     };
 

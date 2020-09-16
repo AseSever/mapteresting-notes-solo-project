@@ -4,6 +4,7 @@ import user from './user.reducer';
 import notes from './notes.reducer';
 import noteDetails from './details.reducer';
 import edit from './edit.reducer';
+import home from './home.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   notes,
   noteDetails,
   edit,
+  home,
 });
 
 export default rootReducer;

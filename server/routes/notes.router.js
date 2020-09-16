@@ -9,7 +9,8 @@ const {
 router.get('/public', rejectUnauthenticated, (req, res) => {
 
     const queryText = 
-        `SELECT * FROM "notes"
+        `SELECT "user".username, lat, lng, title, image, date_created FROM "notes"
+        JOIN "user" ON "notes".user_id = "user".id
         WHERE "notes".public = 'true'
         ORDER BY date_created;`
 

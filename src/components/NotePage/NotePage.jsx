@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import MapContainer from '../MapContainer/MapContainer';
+import NotePageInputs from './NotePageInputs';
+
+// MATERIAL-UI
+
 
 class NotePage extends Component {
     state = {
@@ -34,7 +38,7 @@ class NotePage extends Component {
             <div style={{ margin: '0', alignItems: 'center'}}>
                 
                 <form onSubmit={this.handleNoteSubmit}>
-                    <div>
+                    {/* <div>
                         <input
                             type="text"
                             name="lat"
@@ -50,9 +54,10 @@ class NotePage extends Component {
                             value={this.state.lng}
                             onChange={this.handleInputChangeFor('lng')}
                         />
-                    </div>
-                    <MapContainer handleInputChangeFor={this.handleInputChangeFor}/>
-                    <div >
+                    </div> */}
+                    {/* <MapContainer /> */}
+                    <NotePageInputs handleInputChangeFor={this.handleInputChangeFor}/>
+                    {/* <div >
                         <input
                             type="text"
                             name="title"
@@ -71,7 +76,7 @@ class NotePage extends Component {
 
                             onChange={this.handleInputChangeFor('description')}
                         />
-                    </div>
+                    </div> */}
                     <div>
                         <label htmlFor="public">
                             Public:

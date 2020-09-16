@@ -20,8 +20,8 @@ import {
 
 const useStyles = makeStyles({
     root: {
-        minWidth: 345,
-        maxWidth: 370,
+        minWidth: '80%',
+        maxWidth: '85%',
         margin: 'auto',
         marginTop: 10,
     },
@@ -48,8 +48,6 @@ function MyNoteCards(props) {
             payload: id
         })
     }
-
-
 
     return (
         <div>
