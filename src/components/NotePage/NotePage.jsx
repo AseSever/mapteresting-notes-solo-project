@@ -38,69 +38,9 @@ class NotePage extends Component {
             <div style={{ margin: '0', alignItems: 'center'}}>
                 
                 <form onSubmit={this.handleNoteSubmit}>
-                    {/* <div>
-                        <input
-                            type="text"
-                            name="lat"
-                            placeholder="Latitude"
-                            value={this.state.lat}
-                            onChange={this.handleInputChangeFor('lat')}
-                        />
-                        
-                        <input
-                            type="text"
-                            name="lng"
-                            placeholder="Longitude"
-                            value={this.state.lng}
-                            onChange={this.handleInputChangeFor('lng')}
-                        />
-                    </div> */}
-                    {/* <MapContainer /> */}
                     <NotePageInputs handleInputChangeFor={this.handleInputChangeFor}/>
-                    {/* <div >
-                        <input
-                            type="text"
-                            name="title"
-                            placeholder="Title"
-                            value={this.state.title}
+                    {/* <MapContainer /> */}
 
-                            onChange={this.handleInputChangeFor('title')}
-                        />
-                    </div>
-                    <div>
-                        <input
-                            type="text"
-                            name="description"
-                            placeholder="Description"
-                            value={this.state.description}
-
-                            onChange={this.handleInputChangeFor('description')}
-                        />
-                    </div> */}
-                    <div>
-                        <label htmlFor="public">
-                            Public:
-                        <input
-                                type="radio"
-                                name="public"
-                                value="true"
-                                // checked={this.state.public === true}
-                                onChange={this.handleInputChangeFor('public')}
-                            />
-                        </label>
-                        <label htmlFor="public">
-                            Private:
-                        <input
-                                type="radio"
-                                name="public"
-                                value="false"
-                                onChange={this.handleInputChangeFor('public')}
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <input className="btn" type="submit" name="submit" value="Save" />
-                    </div>
                 </form>
             </div>
         );

@@ -21,8 +21,10 @@ const useStyles = makeStyles((theme) => ({
         margin: 'auto'
     },
     textField: {
-        width: '90%',
-        
+        minWidth: 300,
+        maxWidth: '90%',
+
+
     },
     latlngField: {
         width: '11.4em',
@@ -31,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         minWidth: '80%',
         maxWidth: '95%',
         margin: 'auto',
-        paddingLeft: 15,
+        // paddingLeft: 15,
     },
 }));
 
@@ -41,14 +43,18 @@ function NotePageInputs(props) {
     return (
         <div>
             <Paper className={classes.paper}>
-                <Grid container>
-                <Grid item xs={12}>
+                <Grid
+                    container
+                    justify="center"
+                    alignContent="center"
+                >
+                    <Grid item>
                         <TextField
                             className={classes.latlngField}
                             type="text"
                             id="outlined-margin-dense"
                             variant="outlined"
-                            style={{ margin: 10 }}
+                            style={{ margin: 7 }}
                             margin="dense"
                             label="Latitude"
                             name="lat"
@@ -59,40 +65,85 @@ function NotePageInputs(props) {
                             type="text"
                             id="outlined-margin-dense"
                             variant="outlined"
-                            style={{ margin: 10 }}
+                            style={{ margin: 7 }}
                             margin="dense"
                             label="Longitude"
                             name="lng"
                             onChange={props.handleInputChangeFor('lng')}
                         />
                     </Grid>
-                    <Grid item xs={12}>
-                        <MapContainer />
+                    <Grid item >
+                        {/* <MapContainer /> */}
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item >
                         <TextField
                             className={classes.textField}
                             type="text"
                             id="outlined-full-width"
                             variant="outlined"
-                            style={{ margin: 10 }}
+                            style={{ margin: 7 }}
                             margin="dense"
                             label="Title"
                             name="title"
                             onChange={props.handleInputChangeFor('title')}
                         />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item>
                         <TextField
                             className={classes.textField}
                             type="text"
                             id="outlined-full-width"
                             variant="outlined"
-                            style={{ margin: 10 }}
+                            style={{ margin: 7 }}
                             label="Description"
                             name="description"
                             onChange={props.handleInputChangeFor('description')}
                         />
+                    </Grid>
+                    <Grid
+                        container
+                        justify="center"
+                        alignContent="center"
+                    >
+                        <Grid item >
+                            <FormControl>
+                                <RadioGroup row aria-label="position" name="position" defaultValue="top">
+                                    <FormControlLabel
+                                        value="true"
+                                        name="public"
+                                        onChange={props.handleInputChangeFor('public')}
+                                        control={<Radio color="primary" />}
+                                        style={{ margin: 10 }}
+                                        label="Public"
+                                        labelPlacement="start"
+                                    />
+                                    <FormControlLabel
+                                        value="false"
+                                        name="public"
+                                        onChange={props.handleInputChangeFor('public')}
+                                        control={<Radio color="primary" />}
+                                        style={{ margin: 10 }}
+                                        label="Private"
+                                        labelPlacement="start"
+                                    />
+                                </RadioGroup>
+                            </FormControl>
+                        </Grid>
+                        <Grid
+                            container
+                            justify="center"
+                            alignContent="center"
+                        >
+                            <Grid item>
+                                <Button
+                                    variant="contained"
+                                    type="submit"
+                                    name="submit"
+                                >
+                                    Save
+                                </Button>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Paper>

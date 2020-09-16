@@ -31,7 +31,8 @@ function MapContainer(props) {
     const mapStyles = {
         height: '400px',
         width: '90%',
-        margin: 'auto',
+        margin: '10px',
+        align: 'center',
     };
 
     // const defaultCenter = {
@@ -40,8 +41,8 @@ function MapContainer(props) {
     // }
     return (
         <div>
-            {JSON.stringify(currentPosition.lat && currentPosition.lat.toFixed(7))}
-            {JSON.stringify(currentPosition.lng && currentPosition.lng.toFixed(7))}
+            {/* {JSON.stringify(currentPosition.lat && currentPosition.lat.toFixed(7))}
+            {JSON.stringify(currentPosition.lng && currentPosition.lng.toFixed(7))} */}
             <LoadScript
                 googleMapsApiKey={apiKey}>
                 <GoogleMap
