@@ -5,7 +5,7 @@ import notes from './notes.reducer';
 import noteDetails from './details.reducer';
 import edit from './edit.reducer';
 import home from './home.reducer';
-
+import map from './map.reducer';
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -19,6 +19,7 @@ const rootReducer = combineReducers({
   noteDetails,
   edit,
   home,
+  map,
 });
 
 export default rootReducer;

@@ -16,12 +16,19 @@ function MapContainer(props) {
             lng: position.coords.longitude
         }
         setCurrentPosition(currentPosition);
+        
     };
 
     const onMarkerDragEnd = (event) => {
         const lat = event.latLng.lat();
         const lng = event.latLng.lng();
         setCurrentPosition({ lat, lng })
+        props.dispatch(
+            {
+                type: 'SET_MAP_LATLNG',
+                payload: currentPosition
+            });
+        
     };
 
     useEffect(() => {

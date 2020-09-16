@@ -39,7 +39,9 @@ const useStyles = makeStyles((theme) => ({
 
 function NotePageInputs(props) {
     const classes = useStyles();
-
+    const lng = props.store.map.lng
+    const lat = props.store.map.lat
+    console.log(lat, lng);
     return (
         <div>
             <Paper className={classes.paper}>
@@ -57,6 +59,10 @@ function NotePageInputs(props) {
                             style={{ margin: 7 }}
                             margin="dense"
                             label="Latitude"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            value={lat && lat.toFixed(7)}
                             name="lat"
                             onChange={props.handleInputChangeFor('lat')}
                         />
@@ -68,12 +74,18 @@ function NotePageInputs(props) {
                             style={{ margin: 7 }}
                             margin="dense"
                             label="Longitude"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            value={lng && lng.toFixed(7)}
                             name="lng"
                             onChange={props.handleInputChangeFor('lng')}
                         />
                     </Grid>
-                    <Grid item >
-                        {/* <MapContainer /> */}
+                    <Grid container justify="space-around" alignContent="center">
+                        <Grid item xs={12}>
+                            <MapContainer />
+                        </Grid>
                     </Grid>
                     <Grid item >
                         <TextField
