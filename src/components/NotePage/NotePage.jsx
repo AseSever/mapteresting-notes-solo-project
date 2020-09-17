@@ -4,7 +4,6 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import MapContainer from '../MapContainer/MapContainer';
 import NotePageInputs from './NotePageInputs';
 
-// MATERIAL-UI
 
 
 class NotePage extends Component {
@@ -19,7 +18,7 @@ class NotePage extends Component {
 
     handleNoteSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'SEND_NOTE', payload: this.state});
+        this.props.dispatch({ type: 'SEND_NOTE', payload: this.state });
         this.props.history.push('/mynotes');
     }
 
@@ -35,13 +34,10 @@ class NotePage extends Component {
     render() {
         console.log(this.state);
         return (
-            <div style={{ margin: '0', alignItems: 'center'}}>
-                
-                <form onSubmit={this.handleNoteSubmit}>
-                    <NotePageInputs handleInputChangeFor={this.handleInputChangeFor}/>
-                    {/* <MapContainer /> */}
-
-                </form>
+            <div style={{ margin: '0', alignItems: 'center' }}>
+                    <form onSubmit={this.handleNoteSubmit}>
+                        <NotePageInputs handleInputChangeFor={this.handleInputChangeFor} />
+                    </form>
             </div>
         );
     }

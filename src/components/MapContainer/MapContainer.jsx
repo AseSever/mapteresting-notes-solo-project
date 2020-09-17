@@ -28,7 +28,6 @@ function MapContainer(props) {
                 type: 'SET_MAP_LATLNG',
                 payload: currentPosition
             });
-        
     };
 
     useEffect(() => {
@@ -48,8 +47,7 @@ function MapContainer(props) {
     // }
     return (
         <div>
-            {/* {JSON.stringify(currentPosition.lat && currentPosition.lat.toFixed(7))}
-            {JSON.stringify(currentPosition.lng && currentPosition.lng.toFixed(7))} */}
+            
             <LoadScript
                 googleMapsApiKey={apiKey}>
                 <GoogleMap

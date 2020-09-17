@@ -15,6 +15,9 @@ import {
     FormControl,
 } from '@material-ui/core';
 import MapContainer from '../MapContainer/MapContainer';
+import NotePageButton from './NotePageButton';
+import NotePageRadio from './NotePageRadio';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -79,7 +82,11 @@ function NotePageInputs(props) {
                             onChange={props.handleInputChangeFor('lng')}
                         />
                     </Grid>
-                    <Grid container justify="space-around" alignContent="center">
+                    <Grid 
+                        container 
+                        justify="center" 
+                        alignItems="center"
+                    >
                         <Grid item xs={12}>
                             <MapContainer />
                         </Grid>
@@ -109,51 +116,8 @@ function NotePageInputs(props) {
                             onChange={props.handleInputChangeFor('description')}
                         />
                     </Grid>
-                    <Grid
-                        container
-                        justify="center"
-                        alignContent="center"
-                    >
-                        <Grid item >
-                            <FormControl>
-                                <RadioGroup row aria-label="position" name="position" defaultValue="top">
-                                    <FormControlLabel
-                                        value="true"
-                                        name="public"
-                                        onChange={props.handleInputChangeFor('public')}
-                                        control={<Radio color="primary" />}
-                                        style={{ margin: 10 }}
-                                        label="Public"
-                                        labelPlacement="start"
-                                    />
-                                    <FormControlLabel
-                                        value="false"
-                                        name="public"
-                                        onChange={props.handleInputChangeFor('public')}
-                                        control={<Radio color="primary" />}
-                                        style={{ margin: 10 }}
-                                        label="Private"
-                                        labelPlacement="start"
-                                    />
-                                </RadioGroup>
-                            </FormControl>
-                        </Grid>
-                        <Grid
-                            container
-                            justify="center"
-                            alignContent="center"
-                        >
-                            <Grid item>
-                                <Button
-                                    variant="contained"
-                                    type="submit"
-                                    name="submit"
-                                >
-                                    Save
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </Grid>
+                    <NotePageRadio handleInputChangeFor={props.handleInputChangeFor}/>
+                   <NotePageButton />
                 </Grid>
             </Paper>
         </div>

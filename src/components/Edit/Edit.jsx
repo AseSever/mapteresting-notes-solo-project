@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import EditFormTextField from '../EditFormTextField/EditFormTextField';
@@ -6,114 +6,125 @@ import EditFormTextField from '../EditFormTextField/EditFormTextField';
 // MATERIAL-UI
 import {
     Button,
-    TextField,
+    Paper,
     Radio,
+    Grid,
     RadioGroup,
     FormControlLabel,
     FormControl,
 } from '@material-ui/core';
 
 
-class Edit extends Component {
-    state = {
-        heading: 'Edit Page',
-    };
+function Edit(props) {
 
-    componentDidMount = () => {
-        let id = this.props.match.params.id
+
+    useEffect(() => {
+        let id = props.match.params.id
         // created new reducer specifically for editing details
-        this.props.dispatch(
-            { 
-                type: 'FETCH_EDIT_DETAILS', payload: id 
+        props.dispatch(
+            {
+                type: 'FETCH_EDIT_DETAILS', payload: id
             });
-    }
+    }, [])
 
-
-    handleEditChange = (event) => {
+    const handleEditChange = (event) => {
         console.log(`Handle change of ${event.target.name}`);
-        this.props.dispatch(
+        props.dispatch(
             {
                 type: 'SET_EDIT',
                 payload: { key: event.target.name, value: event.target.value }
             });
     }
 
-    handleEditSubmit = (event) => {
+    const handleEditSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch(
+        props.dispatch(
             {
                 type: 'UPDATE_NOTE',
-                payload: this.props.store.edit,
+                payload: props.store.edit,
             });
-        this.props.history.push('/mynotes');
+        props.history.push('/mynotes');
     }
 
-    handleCancel = (event) => {
+    const handleCancel = (event) => {
         event.preventDefault();
-        this.props.dispatch(
+        props.dispatch(
             {
                 type: 'CANCEL_EDIT'
             });
-        this.props.history.push('/mynotes');
+        props.history.push('/mynotes');
     }
 
-    render() {
-        // variable for more concise data
-        const editFields = this.props.store.edit
-        console.log(editFields);
 
-        return (
-            <div>
-                <h2>{this.state.heading}</h2>
-                <form onSubmit={this.handleEditSubmit}>
+    // variable for more concise data
+    const editFields = props.store.edit
+    console.log(editFields);
 
-                    <FormControl>
-                        <RadioGroup row aria-label="position" name="position" defaultValue="top">
-                            <FormControlLabel
-                                value="true"
-                                name="public"
-                                onChange={(event) => this.handleEditChange(event)}
-                                control={<Radio color="primary" />}
-                                label="Public"
-                                labelPlacement="start"
-                            />
-                            <FormControlLabel
-                                value="false"
-                                name="public"
-                                onChange={(event) => this.handleEditChange(event)}
-                                control={<Radio color="primary" />}
-                                label="Private"
-                                labelPlacement="start"
-                            />
-                        </RadioGroup>
-                    </FormControl>
-
-                    <EditFormTextField
-                        editFields={editFields}
-                        handleEditChange={this.handleEditChange}
-                    />
-                    <div>
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
+    return (
+        <div>
+            <Paper>
+                <form onSubmit={handleEditSubmit}>
+                    <Grid 
+                        container
+                        justify="center"
+                        alignItems="center"
+                    >
+                        <Grid item>
+                            <FormControl>
+                                <RadioGroup row aria-label="position" name="position" defaultValue="top">
+                                    <FormControlLabel
+                                        value="true"
+                                        name="public"
+                                        onChange={(event) => handleEditChange(event)}
+                                        control={<Radio color="primary" />}
+                                        label="Public"
+                                        labelPlacement="start"
+                                    />
+                                    <FormControlLabel
+                                        value="false"
+                                        name="public"
+                                        onChange={(event) => handleEditChange(event)}
+                                        control={<Radio color="primary" />}
+                                        label="Private"
+                                        labelPlacement="start"
+                                    />
+                                </RadioGroup>
+                            </FormControl>
+                        </Grid>
+                        <EditFormTextField
+                            editFields={editFields}
+                            handleEditChange={handleEditChange}
+                        />
+                        <Grid
+                            container
+                            justify="space-evenly"
+                            alignItems="center"
                         >
-                            Save
-                        </Button>
-                    </div>
-                    <div>
-                        <Button
-                            variant="contained"
-                            color="secondary"
-                            onClick={this.handleCancel}
-                        >
-                            Cancel
-                        </Button>
-                    </div>
+                            <Grid item>
+                                <Button
+                                    type="submit"
+                                    variant="contained"
+                                    color="primary"
+                                >
+                                    Save
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <Button
+                                    variant="contained"
+                                    color="secondary"
+                                    onClick={handleCancel}
+                                >
+                                    Cancel
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </Grid>
                 </form>
-            </div>
-        );
-    }
+            </Paper>
+        </div >
+    );
+
 }
 
 export default connect(mapStoreToProps)(Edit);

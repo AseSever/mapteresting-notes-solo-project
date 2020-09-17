@@ -26,14 +26,18 @@ const useStyles = makeStyles({
         maxWidth: '85%',
         margin: 'auto',
         marginTop: 10,
+        
     },
+    card: {
+        backgroundColor: '#2E294E',
+    }
 });
 
 function PublicNotes(props) {
     const classes = useStyles();
     const [selected, setSelected] = useState(false);
 
-
+    console.log(props.note);
     return (
         <div>
             <Card className={classes.root}>
@@ -50,17 +54,22 @@ function PublicNotes(props) {
                         value="check"
                         selected={selected}
                         onChange={() => {
-                          setSelected(!selected);
+                            setSelected(!selected);
                         }}
-                    
+                        onClick={() => props.dispatch({ type: 'TOGGLE_LIKE', payload: props.note.id})}
                     >
-                            <FavoriteIcon color="primary" fontSize="small"/>
+                        <FavoriteIcon color="primary" fontSize="default" />
                     </ToggleButton>
                     <Typography paragraph>
                         {moment(props.note.date_created).format('ll')}
                     </Typography>
                 </CardActions>
             </Card>
+            <div style={{ marginLeft: "50px" }}>
+                <Typography color="textSecondary" component="p">
+                    {props.note.count} Likes
+                </Typography>
+            </div>
         </div>
     );
 }

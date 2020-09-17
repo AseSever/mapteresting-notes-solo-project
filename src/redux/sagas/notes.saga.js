@@ -1,6 +1,18 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
+// saga to post or remove a like from homepage
+function* toggleLike(action) {
+  console.log(action.payload);
+  try {
+    yield axios.put(`/api/note/likes/${action.payload}`);
+
+    yield put({ type: 'FETCH_PUBLIC_NOTES' })
+  } catch (err) {
+    console.log('Error in likeNote saga', err);
+  }
+}
+
 // saga to fetch public noted for home page
 function* publicNotes() {
   try {
@@ -14,7 +26,6 @@ function* publicNotes() {
 
 // saga for fetching a specific note detail
 function* noteDetails(action) {
-  console.log(action.payload);
   try {
     let response = yield axios.get(`/api/note/details/${action.payload}`);
     console.log(response.data);
@@ -65,6 +76,7 @@ function* notesSaga() {
   yield takeLatest('DELETE_NOTE', deleteNote);
   yield takeLatest('FETCH_DETAILS', noteDetails);
   yield takeLatest('FETCH_PUBLIC_NOTES', publicNotes);
+  yield takeLatest('TOGGLE_LIKE', toggleLike);
 }
 
 export default notesSaga;

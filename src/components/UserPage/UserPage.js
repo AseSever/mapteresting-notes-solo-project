@@ -8,8 +8,12 @@ class UserPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
 
   componentDidMount = () => {
-    this.props.dispatch({type: 'FETCH_PUBLIC_NOTES'})
+    this.props.dispatch({type: 'FETCH_PUBLIC_NOTES'});
   } 
+
+  // componentDidUpdate = () => {
+  //   this.props.dispatch({type: 'FETCH_PUBLIC_NOTES'});
+  // }
 
   render() {
     return (

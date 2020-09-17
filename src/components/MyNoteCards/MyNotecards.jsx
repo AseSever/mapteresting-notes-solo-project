@@ -12,13 +12,13 @@ import {
     CardActions,
     CardContent,
     Typography,
-
+    Button,
 } from '@material-ui/core';
 
 
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         minWidth: '80%',
         maxWidth: '85%',
@@ -26,14 +26,12 @@ const useStyles = makeStyles({
         marginTop: 10,
     },
     button: {
-        alignItems: 'right'
+        marginLeft: theme.spacing(4), 
     }
-});
+}));
 
 function MyNoteCards(props) {
-    // Using hooks we're creating local state for a "heading" variable with
-    // a default value of 'Functional Component'
-    const [heading, setHeading] = useState('My Note Cards');
+   
     const classes = useStyles();
 
 
@@ -67,12 +65,16 @@ function MyNoteCards(props) {
                     <Typography variant="body2" color="textSecondary" component="p">
                         {latlng}
                     </Typography>
-                    <button
-                        className={classes.button} 
+                    <Button
+                        className={classes.button}
+                        variant="contained" 
+                        color="secondary"
+                        size="small"
                         onClick={() => handleDelete(props.note.id)}
                     >
                         Delete
-                    </button>
+                    </Button>
+                    
                 </CardActions>
             </Card>
 

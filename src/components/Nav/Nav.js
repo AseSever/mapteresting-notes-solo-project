@@ -73,7 +73,7 @@ const NavDrawer = ({ history }) => {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
+            {theme.direction === "rtl" ? (
               <ChevronLeftIcon />
             ) : (
                 <ChevronRightIcon />
