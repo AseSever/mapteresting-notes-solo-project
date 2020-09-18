@@ -34,19 +34,34 @@ class NotePage extends Component {
 
     // handle change for note state
     handleInputChangeFor = (propertyName) => (event) => {
-        console.log(`In change for ${propertyName}`);
+        
         this.setState({
             ...this.state,
             [propertyName]: event.target.value,
         });
     }
 
+
+    populateNewRealmInputs = () => {
+        this.setState({
+            lat: '44.92479783',
+            lng: '-93.28636700',
+            title: 'Super Cool Front Yard',
+            description: 'Saving to show my dad, awesome rocks',
+            public: 'true',
+        })
+    }    
+
     render() {
         console.log(this.state);
         return (
             <div style={{ margin: '0', alignItems: 'center' }}>
                     <form onSubmit={this.handleNoteSubmit}>
-                        <NotePageInputs handleInputChangeFor={this.handleInputChangeFor} />
+                        <NotePageInputs 
+                            handleInputChangeFor={this.handleInputChangeFor}
+                            populateNewRealmInputs={this.populateNewRealmInputs}
+                            state={this.state} 
+                        />
                     </form>
             </div>
         );

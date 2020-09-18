@@ -8,8 +8,7 @@ import {
     TextField,
     Paper,
     Grid,
-    Button,
-    Radio,
+    Typography,
     RadioGroup,
     FormControlLabel,
     FormControl,
@@ -34,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
         minWidth: '80%',
         maxWidth: '95%',
         margin: 'auto',
+        padding: 10,
     },
 }));
 
@@ -50,6 +50,13 @@ function NotePageInputs(props) {
                     justify="center"
                     alignContent="center"
                 >
+                    <Typography 
+                        variant="h5" 
+                        style={{ marginBottom: "10px" }}
+                        onClick={props.populateNewRealmInputs}
+                    >
+                        New Note
+                    </Typography>
                     <Grid item>
                         <TextField
                             className={classes.latlngField}
@@ -82,9 +89,9 @@ function NotePageInputs(props) {
                             onChange={props.handleInputChangeFor('lng')}
                         />
                     </Grid>
-                    <Grid 
-                        container 
-                        justify="center" 
+                    <Grid
+                        container
+                        justify="center"
                         alignItems="center"
                     >
                         <Grid item xs={12}>
@@ -100,6 +107,7 @@ function NotePageInputs(props) {
                             style={{ margin: 7 }}
                             margin="dense"
                             label="Title"
+                            value={props.state.title}
                             name="title"
                             onChange={props.handleInputChangeFor('title')}
                         />
@@ -112,12 +120,13 @@ function NotePageInputs(props) {
                             variant="outlined"
                             style={{ margin: 7 }}
                             label="Description"
+                            value={props.state.description}
                             name="description"
                             onChange={props.handleInputChangeFor('description')}
                         />
                     </Grid>
-                    <NotePageRadio handleInputChangeFor={props.handleInputChangeFor}/>
-                   <NotePageButton />
+                    <NotePageRadio handleInputChangeFor={props.handleInputChangeFor} state={props.state}/>
+                    <NotePageButton />
                 </Grid>
             </Paper>
         </div>

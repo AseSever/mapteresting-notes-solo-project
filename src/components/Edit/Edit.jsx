@@ -14,10 +14,17 @@ import {
     FormControl, 
     Typography,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        padding: 10,
+    },
+    
+}));
 
 function Edit(props) {
-
+    const classes = useStyles();
 
     useEffect(() => {
         let id = props.match.params.id
@@ -63,7 +70,7 @@ function Edit(props) {
 
     return (
         <div>
-            <Paper>
+            <Paper className={classes.root}>
                 <form onSubmit={handleEditSubmit}>
                     <Grid 
                         container
