@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
         minWidth: '80%',
         maxWidth: '95%',
         margin: 'auto',
+        padding: 10,
     },
 }));
 
@@ -106,6 +107,7 @@ function NotePageInputs(props) {
                             style={{ margin: 7 }}
                             margin="dense"
                             label="Title"
+                            value={props.state.title}
                             name="title"
                             onChange={props.handleInputChangeFor('title')}
                         />
@@ -118,11 +120,12 @@ function NotePageInputs(props) {
                             variant="outlined"
                             style={{ margin: 7 }}
                             label="Description"
+                            value={props.state.description}
                             name="description"
                             onChange={props.handleInputChangeFor('description')}
                         />
                     </Grid>
-                    <NotePageRadio handleInputChangeFor={props.handleInputChangeFor} />
+                    <NotePageRadio handleInputChangeFor={props.handleInputChangeFor} state={props.state}/>
                     <NotePageButton />
                 </Grid>
             </Paper>

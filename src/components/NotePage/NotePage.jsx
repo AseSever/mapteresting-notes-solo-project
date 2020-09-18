@@ -44,11 +44,11 @@ class NotePage extends Component {
 
     populateNewRealmInputs = () => {
         this.setState({
-            lat: '44.95281947',
-            lng: '-93.24288365',
-            title: 'Martin Sabo Bridge',
-            description: 'Favorite bridge to bike to and chill!',
-            public: true,
+            lat: '44.92479783',
+            lng: '-93.28636700',
+            title: 'Super Cool Front Yard',
+            description: 'Saving to show my dad, awesome rocks',
+            public: 'true',
         })
     }    
 
@@ -59,7 +59,8 @@ class NotePage extends Component {
                     <form onSubmit={this.handleNoteSubmit}>
                         <NotePageInputs 
                             handleInputChangeFor={this.handleInputChangeFor}
-                            populateNewRealmInputs={this.populateNewRealmInputs} 
+                            populateNewRealmInputs={this.populateNewRealmInputs}
+                            state={this.state} 
                         />
                     </form>
             </div>

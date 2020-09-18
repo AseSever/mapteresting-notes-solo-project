@@ -12,7 +12,7 @@ import {
 class MyNotes extends Component {
   state = {
     heading: 'My Notes',
-    info: 'Click note to edit'
+    info: 'Tap note to see details.'
   };
 
   componentDidMount = () => {

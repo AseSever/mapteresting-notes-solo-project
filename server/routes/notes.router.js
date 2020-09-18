@@ -33,7 +33,7 @@ router.put('/likes/:id', rejectUnauthenticated, async (req, res) => {
             
             `
         const result = await client.query(selectLikesQuery, [req.user.id, req.params.id])
-           
+        // if result.rows exists then delete , else insert
         if( result.rows.length > 0 ) {
             
             await client.query(deleteLikesQuery, [req.user.id, req.params.id])
@@ -83,7 +83,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
     const queryText =
         `SELECT * FROM "notes" 
-        WHERE "notes".user_id = $1;`
+        WHERE "notes".user_id = $1
+        ORDER BY "date_created" DESC;`
+        
     pool.query(queryText, [req.user.id]).then(result => {
         res.send(result.rows)
     })
