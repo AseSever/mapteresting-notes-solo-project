@@ -27,17 +27,15 @@ const useStyles = makeStyles((theme) => ({
 
 function MyNoteDetails(props) {
     const classes = useStyles();
-
     // setting a variable to show latitude and longitude for position
     const latlng = Number(props.store.noteDetails.lat) + ' ' + Number(props.store.noteDetails.lng)
-    console.log(props.store.noteDetails);
-    // details variable for easier labeling
+   
     const details = props.store.noteDetails
     console.log(latlng);
 
     // on page load, sets data
     useEffect(() => {
-        console.log(props.match);
+       
         const id = props.match.params.id
         props.dispatch({ type: 'FETCH_DETAILS', payload: id })
     }, []);
@@ -60,15 +58,18 @@ function MyNoteDetails(props) {
                             {latlng}
                         </Typography>
                     </Grid>
-                    <Grid item>
-                        <Typography>
-                            {details.title}
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <Typography align="center">
-                            {details.description}
-                        </Typography>
+                   
+                        <Grid item>
+                            <Typography align="center">
+                                {details.title}
+                            </Typography>
+                        </Grid>
+                    <Grid container justify="center">
+                        <Grid item >
+                            <Typography>
+                                {details.description}
+                            </Typography>
+                        </Grid>
                     </Grid>
                 </Grid>
                 <Grid

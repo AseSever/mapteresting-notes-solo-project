@@ -33,11 +33,6 @@ const NavItems = ({ store, dispatch, handleDrawerClose }) => {
       icon: <HomeIcon />,
       path: loginLinkData.path
     },
-    {
-      text: "About",
-      icon: <InfoIcon />,
-      path: '/about'
-    }
   ];
   const userNavItems = [
     {
@@ -47,7 +42,7 @@ const NavItems = ({ store, dispatch, handleDrawerClose }) => {
     },
     {
       text: "My Notes",
-      icon: <AccountCircleIcon />,
+      icon: <InfoIcon />,
       path: '/mynotes'
     }
   ];

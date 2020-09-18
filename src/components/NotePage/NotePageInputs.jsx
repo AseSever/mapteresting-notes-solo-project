@@ -8,8 +8,7 @@ import {
     TextField,
     Paper,
     Grid,
-    Button,
-    Radio,
+    Typography,
     RadioGroup,
     FormControlLabel,
     FormControl,
@@ -50,6 +49,13 @@ function NotePageInputs(props) {
                     justify="center"
                     alignContent="center"
                 >
+                    <Typography 
+                        variant="h5" 
+                        style={{ marginBottom: "10px" }}
+                        onClick={props.populateNewRealmInputs}
+                    >
+                        New Note
+                    </Typography>
                     <Grid item>
                         <TextField
                             className={classes.latlngField}
@@ -82,9 +88,9 @@ function NotePageInputs(props) {
                             onChange={props.handleInputChangeFor('lng')}
                         />
                     </Grid>
-                    <Grid 
-                        container 
-                        justify="center" 
+                    <Grid
+                        container
+                        justify="center"
                         alignItems="center"
                     >
                         <Grid item xs={12}>
@@ -116,8 +122,8 @@ function NotePageInputs(props) {
                             onChange={props.handleInputChangeFor('description')}
                         />
                     </Grid>
-                    <NotePageRadio handleInputChangeFor={props.handleInputChangeFor}/>
-                   <NotePageButton />
+                    <NotePageRadio handleInputChangeFor={props.handleInputChangeFor} />
+                    <NotePageButton />
                 </Grid>
             </Paper>
         </div>

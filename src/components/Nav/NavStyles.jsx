@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         align: "center",
         alignItems: "center",
+        color: "#EDE7D9",
         padding: theme.spacing(0, 1),
         // necessary for content to be below app bar
         ...theme.mixins.toolbar,

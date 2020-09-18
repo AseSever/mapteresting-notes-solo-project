@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import clsx from "clsx";
-import { useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import NavList from './NavMenuItems'
 import useStyles from './NavStyles'
 
+import clsx from "clsx";
+import { useTheme } from "@material-ui/core/styles";
+
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+
+// MATERIAL-UI CORE
+import {
+  Drawer,
+  CssBaseline,
+  AppBar,
+  Toolbar,
+  Typography,
+  Divider,
+  IconButton,
+} from '@material-ui/core';
 
 /* Colors for project 
 
@@ -49,16 +54,17 @@ const NavDrawer = ({ history }) => {
         })}
       >
         <Toolbar style={{ marginTop: '.5em' }}>
-          <Typography variant="h6" style={{ margin: 'auto' }}>
+          <Typography variant="h5" style={{ margin: 'auto', color: '#EDE7D9' }}>
             Mapteresting Notes
           </Typography>
           <IconButton
-            color="inherit"
+            color="#EDE7D9"
             aria-label="open drawer"
+            
             onClick={handleDrawerOpen}
             edge="start"
           >
-            <MenuIcon style={{ alignItems: "right" }} />
+            <MenuIcon style={{ alignItems: "right", color: "#EDE7D9" }} />
           </IconButton>
         </Toolbar>
       </AppBar>

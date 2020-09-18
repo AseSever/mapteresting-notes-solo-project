@@ -39,7 +39,7 @@ function PublicNotes(props) {
     const classes = useStyles();
     const [selected, setSelected] = useState(false);
 
-    console.log(props.note);
+    
     return (
         <div>
             <Card className={classes.root}>
