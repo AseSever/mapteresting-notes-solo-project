@@ -63,7 +63,7 @@ router.get('/public', rejectUnauthenticated, (req, res) => {
         FULL OUTER JOIN "likes" ON "notes".id = "likes".notes_id
         WHERE "notes".public = 'true'
         GROUP BY "likes".notes_id, "notes".id, "user".username
-        ORDER BY "date_created";`
+        ORDER BY "date_created" DESC;`
 
     pool.query(queryText).then(result => {
         res.send(result.rows)

@@ -16,9 +16,19 @@ class NotePage extends Component {
         user_id: this.props.store.user.id
     };
 
+    
+
     handleNoteSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'SEND_NOTE', payload: this.state });
+        this.props.dispatch(
+            { 
+                type: 'SEND_NOTE', 
+                payload: this.state 
+            });
+        this.props.dispatch(
+            {
+                type: 'CLEAR_MAP_LATLNG'
+            })
         this.props.history.push('/mynotes');
     }
 

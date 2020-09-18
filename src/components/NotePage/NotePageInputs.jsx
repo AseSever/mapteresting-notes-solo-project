@@ -62,7 +62,7 @@ function NotePageInputs(props) {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            value={lat && lat.toFixed(7)}
+                            value={lat && lat.toFixed(8)}
                             name="lat"
                             onChange={props.handleInputChangeFor('lat')}
                         />
@@ -77,7 +77,7 @@ function NotePageInputs(props) {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            value={lng && lng.toFixed(7)}
+                            value={lng && lng.toFixed(8)}
                             name="lng"
                             onChange={props.handleInputChangeFor('lng')}
                         />

@@ -34,6 +34,9 @@ function MapContainer(props) {
         navigator.geolocation.getCurrentPosition(success);
     })
 
+
+
+
     const mapStyles = {
         height: '400px',
         width: '90%',

@@ -7,6 +7,7 @@ import moment from 'moment';
 // MATERIAL-UI
 import { makeStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import {
     Card,
@@ -17,6 +18,7 @@ import {
     CardContent,
     Typography,
     IconButton,
+    
 } from '@material-ui/core';
 
 
@@ -50,16 +52,13 @@ function PublicNotes(props) {
 
                 </CardContent>
                 <CardActions>
-                    <ToggleButton
-                        value="check"
-                        selected={selected}
-                        onChange={() => {
-                            setSelected(!selected);
-                        }}
+                    
+                    <IconButton
                         onClick={() => props.dispatch({ type: 'TOGGLE_LIKE', payload: props.note.id})}
                     >
-                        <FavoriteIcon color="primary" fontSize="default" />
-                    </ToggleButton>
+                        <FavoriteIcon  variant="outlined" color="primary" fontSize="default" />
+                    </IconButton>
+                    
                     <Typography paragraph>
                         {moment(props.note.date_created).format('ll')}
                     </Typography>
