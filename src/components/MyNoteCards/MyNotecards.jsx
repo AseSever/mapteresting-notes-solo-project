@@ -13,6 +13,7 @@ import {
     CardContent,
     Typography,
     Button,
+    Grid,
 } from '@material-ui/core';
 
 
@@ -26,12 +27,12 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 10,
     },
     button: {
-        marginLeft: theme.spacing(4), 
+        marginLeft: theme.spacing(4),
     }
 }));
 
 function MyNoteCards(props) {
-   
+
     const classes = useStyles();
 
 
@@ -55,26 +56,37 @@ function MyNoteCards(props) {
                 />
                 <CardActionArea onClick={() => props.handleDetails(props.note.id)}>
                     <CardContent>
-                        
+
                         <Typography variant="body2" color="textSecondary" component="p">
                             {props.note.description}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {latlng}
-                    </Typography>
-                    <Button
-                        className={classes.button}
-                        variant="contained" 
-                        color="secondary"
-                        size="small"
-                        onClick={() => handleDelete(props.note.id)}
+                    <Grid 
+                        container
+                        justify="space-between"
+                        alignItems="baseline"
                     >
-                        Delete
-                    </Button>
-                    
+                        <Grid item>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {latlng}
+
+                            </Typography>
+                        </Grid>
+                        <Grid item>
+                            <Button
+                                className={classes.button}
+                                variant="contained"
+                                color="secondary"
+                                size="small"
+                                onClick={() => handleDelete(props.note.id)}
+                            >
+                                Delete
+                            </Button>
+                        </Grid>
+                    </Grid>
+
                 </CardActions>
             </Card>
 

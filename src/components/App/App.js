@@ -49,6 +49,17 @@ const customeTheme = createMuiTheme({
       main: '#E71D36',
     },
   },
+  overrides: {
+    MuiButton: {
+      root: {
+          borderRadius: '3px',
+          border: '2px solid #2E294E',
+        },
+        contained: {
+          boxShadow: '3px 3px 0 #2E294E',
+      },
+    },
+  },
 
 });
 
@@ -63,7 +74,7 @@ class App extends Component {
         <Router>
           <div>
             <Nav />
-            
+
             <Switch>
               {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
               <Redirect exact from="/" to="/home" />
@@ -146,7 +157,7 @@ class App extends Component {
 
 
               <Route exact path="/map" component={MapContainer} />
-              <Route exact path="/upload" component={ImageUpload}/>
+              <Route exact path="/upload" component={ImageUpload} />
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
             </Switch>
