@@ -50,8 +50,8 @@ function NotePageInputs(props) {
                     justify="center"
                     alignContent="center"
                 >
-                    <Typography 
-                        variant="h5" 
+                    <Typography
+                        variant="h5"
                         style={{ marginBottom: "10px" }}
                         onClick={props.populateNewRealmInputs}
                     >
@@ -125,8 +125,17 @@ function NotePageInputs(props) {
                             onChange={props.handleInputChangeFor('description')}
                         />
                     </Grid>
-                    <NotePageRadio handleInputChangeFor={props.handleInputChangeFor} state={props.state}/>
-                    <NotePageButton />
+
+                    <NotePageRadio handleInputChangeFor={props.handleInputChangeFor} state={props.state} />
+                    <Grid 
+                        container
+                        justify="center"
+                        alignItems="center"
+                    >
+                        <Grid item>
+                            <NotePageButton />
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Paper>
         </div>

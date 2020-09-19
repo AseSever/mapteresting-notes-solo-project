@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import PublicNotes from './PublicNotes';
 
+import { 
+  Grid,
+  Typography,
+} from '@material-ui/core';
+
 class UserPage extends Component {
 
   componentDidMount = () => {
@@ -12,8 +17,13 @@ class UserPage extends Component {
   render() {
     return (
       <div>
-        <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
-
+        <Grid container justify="space-around">
+          <Grid item>
+            <Typography variant="h4" component="h3">
+              Welcome, {this.props.store.user.username}! 
+            </Typography>
+          </Grid>
+        </Grid>
         {this.props.store.home.map((note, i) => {
           return (<PublicNotes key={i} note={note} />)
         })}

@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 10,
     },
     button: {
-        marginLeft: theme.spacing(4),
+        width: 20,
+        height: 25,
     }
 }));
 
@@ -53,24 +54,26 @@ function MyNoteCards(props) {
             <Card className={classes.root}>
                 <CardHeader
                     title={props.note.title}
+                    align="center"
                 />
                 <CardActionArea onClick={() => props.handleDetails(props.note.id)}>
                     <CardContent>
 
-                        <Typography variant="body2" color="textSecondary" component="p">
+                        <Typography variant="body2" color="textSecondary" component="p" align="center">
                             {props.note.description}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Grid 
+                    <Grid
                         container
                         justify="space-between"
-                        alignItems="baseline"
+                        alignItems="flex-end"
                     >
                         <Grid item>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                {latlng}
+
+                                Created: {moment(props.note.date_created).calendar()}
 
                             </Typography>
                         </Grid>

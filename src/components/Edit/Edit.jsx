@@ -105,6 +105,7 @@ function Edit(props) {
                         />
                         <Grid
                             container
+                            spacing={3}
                             justify="space-evenly"
                             alignItems="center"
                         >

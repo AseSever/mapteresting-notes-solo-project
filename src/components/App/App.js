@@ -46,7 +46,7 @@ const customeTheme = createMuiTheme({
       main: '#1B998B',
     },
     secondary: {
-      main: '#E71D36',
+      main: '#E93C0C',
     },
   },
   overrides: {
@@ -54,6 +54,7 @@ const customeTheme = createMuiTheme({
       root: {
           borderRadius: '3px',
           border: '2px solid #2E294E',
+          
         },
         contained: {
           boxShadow: '3px 3px 0 #2E294E',

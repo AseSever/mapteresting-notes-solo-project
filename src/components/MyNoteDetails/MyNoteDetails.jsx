@@ -61,13 +61,13 @@ function MyNoteDetails(props) {
                     </Grid>
                    
                         <Grid item>
-                            <Typography align="center">
+                            <Typography variant="h6" component="h4" align="center">
                                 {details.title}
                             </Typography>
                         </Grid>
                     <Grid container justify="center">
                         <Grid item >
-                            <Typography>
+                            <Typography variant="body1" component="h4">
                                 {details.description}
                             </Typography>
                         </Grid>
@@ -75,7 +75,8 @@ function MyNoteDetails(props) {
                 </Grid>
                 <Grid
                     container
-                    justify="center"
+                    spacing={3}
+                    justify="space-around"
                     alignItems="center"
                 >
                     <Grid item >
@@ -88,8 +89,7 @@ function MyNoteDetails(props) {
                             Edit
                         </Button>
                     </Grid>
-                        &nbsp;
-                        &nbsp;
+            
                     <Grid item >
                         <Button
                             variant="contained"
@@ -99,8 +99,7 @@ function MyNoteDetails(props) {
                             Back
                         </Button>
                     </Grid>
-                        &nbsp;
-                        &nbsp;
+                       
                 </Grid>
             </Paper>
         </div >
