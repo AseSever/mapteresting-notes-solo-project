@@ -35,7 +35,9 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: '#C5D86D',
+        backgroundColor: '#1C9C8D',
+        borderRadius: '2px',
+        border: '2px solid #2E294E',
     },
 
     drawerHeader: {

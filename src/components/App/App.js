@@ -43,7 +43,7 @@ const customeTheme = createMuiTheme({
   //theme settings
   palette: {
     primary: {
-      main: '#1B998B',
+      main: '#15796E',
     },
     secondary: {
       main: '#E93C0C',
@@ -52,14 +52,43 @@ const customeTheme = createMuiTheme({
   overrides: {
     MuiButton: {
       root: {
-          borderRadius: '3px',
-          border: '2px solid #2E294E',
-          
-        },
-        contained: {
-          boxShadow: '3px 3px 0 #2E294E',
+        borderRadius: '2px',
+        border: '2px solid #2E294E',
+      },
+      contained: {
+        boxShadow: '2px 2px 0 #2E294E',
       },
     },
+    MuiIcon: {
+      root: {
+        borderRadius: '2px',
+        border: '2px solid #2E294E',
+      },
+      contained: {
+        boxShadow: '2px 2px 0 #2E294E',
+      },
+    },
+    MuiPaper: {
+      root: {
+        backgroundColor: '#C5D86D',
+        borderRadius: '2px',
+        border: '2px solid #2E294E',
+      },
+      elevation1: {
+        boxShadow: '2px 2px 0 #2E294E'
+      },
+      elevation2: {
+        boxShadow: '4px 4px 0 #2E294E'
+      },
+      elevation3: {
+        boxShadow: '4px 5px 0 #2E294E'
+      }
+    },
+    MuiDivider: {
+      root: {
+        border: '1px solid #2E294E',
+      },
+    }
   },
 
 });

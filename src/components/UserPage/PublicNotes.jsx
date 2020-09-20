@@ -18,7 +18,7 @@ import {
     CardContent,
     Typography,
     IconButton,
-    
+
 } from '@material-ui/core';
 
 
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
         maxWidth: '85%',
         margin: 'auto',
         marginTop: 10,
-        
+
     },
     card: {
         backgroundColor: '#2E294E',
@@ -39,7 +39,7 @@ function PublicNotes(props) {
     const classes = useStyles();
     const [selected, setSelected] = useState(false);
 
-    
+
     return (
         <div>
             <Card className={classes.root}>
@@ -52,13 +52,13 @@ function PublicNotes(props) {
 
                 </CardContent>
                 <CardActions>
-                    
+
                     <IconButton
-                        onClick={() => props.dispatch({ type: 'TOGGLE_LIKE', payload: props.note.id})}
+                        onClick={() => props.dispatch({ type: 'TOGGLE_LIKE', payload: props.note.id })}
                     >
-                        <FavoriteIcon  variant="outlined" color="primary" fontSize="default" />
+                        <FavoriteIcon variant="outlined" color="primary" fontSize="default" />
                     </IconButton>
-                    
+
                     <Typography paragraph>
                         {moment(props.note.date_created).format('ll')}
                     </Typography>

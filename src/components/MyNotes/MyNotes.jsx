@@ -7,12 +7,13 @@ import MyNoteCards from '../MyNoteCards/MyNotecards';
 // MATERIAL-UI
 import {
   Grid,
+  Typography,
 } from '@material-ui/core';
 
 class MyNotes extends Component {
   state = {
     heading: 'My Notes',
-    info: 'Tap note to see details.'
+    info: 'Tap note to see details'
   };
 
   componentDidMount = () => {
@@ -34,7 +35,9 @@ class MyNotes extends Component {
     return (
       <Grid container justify="center" alignItems="flex-start">
         <Grid item>
-          <h1>{this.state.heading}</h1>
+          <Typography variant="h4" component="h3">
+            {this.state.heading}
+          </Typography>
         </Grid>
         <Grid container justify="center" alignItems="center">
           <Grid item>
@@ -42,15 +45,15 @@ class MyNotes extends Component {
           </Grid>
         </Grid>
         <Grid item>
-        {this.props.store.notes.map((note, i) => {
-          return (
-            <MyNoteCards
-              key={i}
-              note={note}
-              handleDetails={this.handleDetails}
-            />
-          )
-        })}
+          {this.props.store.notes.map((note, i) => {
+            return (
+              <MyNoteCards
+                key={i}
+                note={note}
+                handleDetails={this.handleDetails}
+              />
+            )
+          })}
         </Grid>
 
       </Grid>

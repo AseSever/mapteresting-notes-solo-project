@@ -25,9 +25,11 @@ const useStyles = makeStyles((theme) => ({
     textField: {
         minWidth: 300,
         maxWidth: '90%',
+        backgroundColor: '#EFF1F3',
     },
     latlngField: {
         width: '11.4em',
+        backgroundColor: '#EFF1F3',
     },
     paper: {
         minWidth: '80%',
