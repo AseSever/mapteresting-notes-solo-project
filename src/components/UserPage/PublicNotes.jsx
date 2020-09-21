@@ -48,9 +48,6 @@ function PublicNotes(props) {
                     title={props.note.title}
                     subheader={props.note.username}
                 />
-                <CardContent>
-
-                </CardContent>
                 <CardActions>
 
                     <IconButton

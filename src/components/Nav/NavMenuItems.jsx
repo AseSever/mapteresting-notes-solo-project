@@ -52,7 +52,7 @@ const NavItems = ({ store, dispatch, handleDrawerClose }) => {
       <List>
         {persistentNav.map(({ text, icon, path }) => (
           <ListItem key={text} component={Link} to={path} onClick={handleDrawerClose}>
-            <ListItemIcon>
+            <ListItemIcon style={{ color: "#EFF1F3"}}>
               {icon}
             </ListItemIcon>
             <ListItemText primary={text} />
@@ -62,14 +62,14 @@ const NavItems = ({ store, dispatch, handleDrawerClose }) => {
           <>
             {userNavItems.map(({ text, icon, path }) => (
               <ListItem key={text} component={Link} to={path} onClick={handleDrawerClose}>
-                <ListItemIcon>
+                <ListItemIcon style={{ color: "#EFF1F3"}}>
                   {icon}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
             <ListItem component={Link} to={'/'} onClick={logOut}>
-              <ListItemIcon>
+              <ListItemIcon style={{ color: "#EFF1F3"}}>
                 <CloseIcon />
               </ListItemIcon>
               <ListItemText primary={'Logout'} />

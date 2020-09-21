@@ -84,6 +84,35 @@ const customeTheme = createMuiTheme({
         boxShadow: '4px 5px 0 #2E294E'
       }
     },
+    MuiCard: {
+      root: {
+        marginBottom: '20px'
+      }
+    },
+    MuiCardHeader: {
+      root: {
+        backgroundColor: '#1B998B',
+        borderRadius: '3px',
+        border: '2px solid #2E294E',
+        boxSizing: 'border-box',
+        width: '90%',
+        align: 'center',
+        margin: '15px auto',
+        fontWeight: 'bold',
+        color: '#EFF1F3',
+      },
+    },
+    MuiCardActionArea: {
+      root: {
+        align: 'center',
+        margin: '-5px auto',
+      }  
+    },
+    MuiCardActions: {
+      root: {
+        marginTop: '8px'
+      },
+    },
     MuiDivider: {
       root: {
         border: '1px solid #2E294E',

@@ -38,11 +38,8 @@ function MyNoteCards(props) {
 
 
     const latlng = Number(props.note.lat) + ' ' + Number(props.note.lng)
-    console.log(props.note);
-    console.log(latlng);
 
     const handleDelete = (id) => {
-        console.log(`clickin ${id}`);
         props.dispatch({
             type: 'DELETE_NOTE',
             payload: id
@@ -52,11 +49,12 @@ function MyNoteCards(props) {
     return (
         <div>
             <Card className={classes.root}>
+            <CardActionArea onClick={() => props.handleDetails(props.note.id)}>
                 <CardHeader
                     title={props.note.title}
                     align="center"
                 />
-                <CardActionArea onClick={() => props.handleDetails(props.note.id)}>
+                
                     <CardContent>
 
                         <Typography variant="body2" color="textSecondary" component="p" align="center">
