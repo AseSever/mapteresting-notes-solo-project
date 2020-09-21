@@ -13,7 +13,7 @@ import {
 
 class MyNotes extends Component {
   state = {
-    heading: 'My Notes',
+    heading: 'My Locations',
     info: 'Tap note to see details'
   };
 

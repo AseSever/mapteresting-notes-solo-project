@@ -55,7 +55,7 @@ const NavDrawer = ({ history }) => {
       >
         <Toolbar style={{ marginTop: '.5em' }}>
           <Typography variant="h5" style={{ margin: 'auto', color: '#EDE7D9' }}>
-            Mapteresting Notes
+            Mapteresting Locations
           </Typography>
           <IconButton
             color="#EDE7D9"

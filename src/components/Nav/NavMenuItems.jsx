@@ -36,7 +36,7 @@ const NavItems = ({ store, dispatch, handleDrawerClose }) => {
   ];
   const userNavItems = [
     {
-      text: "Add Note",
+      text: "Add Location",
       icon: <AddCircleIcon />,
       path: '/note-create'
     },

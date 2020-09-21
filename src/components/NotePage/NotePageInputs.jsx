@@ -55,7 +55,7 @@ function NotePageInputs(props) {
                         align="center"
                         onClick={props.populateNewRealmInputs}
                     >
-                        New Note
+                        Add Location
                     </Typography>
                 </Grid>
                 </Paper>
