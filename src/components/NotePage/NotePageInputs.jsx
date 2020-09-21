@@ -9,9 +9,6 @@ import {
     Paper,
     Grid,
     Typography,
-    RadioGroup,
-    FormControlLabel,
-    FormControl,
 } from '@material-ui/core';
 import MapContainer from '../MapContainer/MapContainer';
 import NotePageButton from './NotePageButton';
@@ -46,19 +43,31 @@ function NotePageInputs(props) {
     console.log(lat, lng);
     return (
         <div>
+            <Grid
+                container
+                justify="center"
+                alignContent="center"
+            >
+                <Paper style={{ width: "95%", padding: "10px", marginBottom: "20px" }}>
+                <Grid item>
+                    <Typography
+                        variant="h5"
+                        align="center"
+                        onClick={props.populateNewRealmInputs}
+                    >
+                        New Note
+                    </Typography>
+                </Grid>
+                </Paper>
+            </Grid>
+
             <Paper className={classes.paper}>
                 <Grid
                     container
                     justify="center"
                     alignContent="center"
                 >
-                    <Typography
-                        variant="h5"
-                        style={{ marginBottom: "10px" }}
-                        onClick={props.populateNewRealmInputs}
-                    >
-                        New Note
-                    </Typography>
+
                     <Grid item>
                         <TextField
                             className={classes.latlngField}
@@ -129,7 +138,7 @@ function NotePageInputs(props) {
                     </Grid>
 
                     <NotePageRadio handleInputChangeFor={props.handleInputChangeFor} state={props.state} />
-                    <Grid 
+                    <Grid
                         container
                         justify="center"
                         alignItems="center"

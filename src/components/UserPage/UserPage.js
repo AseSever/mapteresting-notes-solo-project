@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import PublicNotes from './PublicNotes';
 
-import { 
+import {
   Grid,
   Typography,
+  Paper,
 } from '@material-ui/core';
 
 class UserPage extends Component {
@@ -17,18 +18,23 @@ class UserPage extends Component {
   render() {
     return (
       <div>
+
         <Grid container justify="space-around">
-          <Grid item>
-            <Typography variant="h4" component="h3">
-              Welcome, {this.props.store.user.username}! 
+          <Paper style={{ width: "85%", padding: "10px", marginBottom: "20px" }}>
+            <Grid item>
+              <Typography variant="h4" component="h3" align="center">
+                Welcome, {this.props.store.user.username}!
             </Typography>
-          </Grid>
+            </Grid>
+          </Paper>
         </Grid>
+
         {this.props.store.home.map((note, i) => {
           return (<PublicNotes key={i} note={note} />)
         })}
 
       </div>
+
     );
   }
 }

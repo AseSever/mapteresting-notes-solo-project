@@ -40,14 +40,10 @@ function MapContainer(props) {
     const mapStyles = {
         height: '400px',
         width: '90%',
-        margin: '10px',
+        margin: '19px',
         align: 'center',
     };
 
-    // const defaultCenter = {
-    //     lat: 44.9355463,
-    //     lng: -93.2827433
-    // }
     return (
         <div>
             

@@ -53,7 +53,6 @@ class NotePage extends Component {
     }    
 
     render() {
-        console.log(this.state);
         return (
             <div style={{ margin: '0', alignItems: 'center' }}>
                     <form onSubmit={this.handleNoteSubmit}>
