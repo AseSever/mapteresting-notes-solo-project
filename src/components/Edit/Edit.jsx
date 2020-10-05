@@ -15,10 +15,13 @@ import {
     Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Autocomplete } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         padding: 10,
+        maxWidth: '90%',
+        margin: 'auto',
     },
     
 }));
