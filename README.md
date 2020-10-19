@@ -1,121 +1,61 @@
-# Prime Project
+# Mapteresting Locations
 
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+## Description
+I created this App so I could have something that would let me save a spot on a map to remember and maybe show off to others.  The big challenge was getting the google maps to give me the location I was looking for.  The extra feature I was trying to get updated was to get the like button to work.
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+## ON START UP
 
-## Use the Template for This Repository (Don't Clone) 
-
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account.
-
-
-## Prerequisites
-
-Before you get started, make sure you have the following software installed on your computer:
-
-- [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
-
-## Create database and table
-
-Create a new database called `prime_app` and create a `user` table:
-
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
+1. After cloning and starting up this app run:
+```
+npm install
 ```
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+2. Once everything is installed create a database called mapteresting_notes and then copy the ```CREATE TABLE``` code from the database.sql file
 
-## Development Setup Instructions
+3. Before running the server create a ```.env``` file.  In .env add ```SERVER_SESSION_SECRET=``` and add a random string for the server password.  It should look something like ```SERVER_SESSION_SECRET=u12#dhaUAS91B&@b1@d```
 
-- Run `npm install`
-- Create a `.env` file at the root of the project and paste this line into the file:
-  ```
-  SERVER_SESSION_SECRET=superDuperSecret
-  ```
-  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm run server`
-- Run `npm run client`
-- Navigate to `localhost:3000`
+4. The next line you will need to add to the ```.env``` file is a google api key.  First go to google maps api webpage to get yours.  https://developers.google.com/maps/documentation/javascript/get-api-key?utm_source=google&utm_medium=cpc&utm_campaign=FY20-Q3-global-demandgen-displayonnetworkhouseads-cs-GMP_maps_contactsal_saf_v2&utm_content=text-ad-none-none-DEV_c-CRE_460848633508-ADGP_Hybrid%20%7C%20AW%20SEM%20%7C%20BKWS%20~%20Google%20Maps%20API-KWID_43700033921822021-kwd-335425467-userloc_9019672&utm_term=KW_google%20maps%20api-ST_google%20maps%20api&gclid=CjwKCAjwz6_8BRBkEiwA3p02VSyl7iPpUUc2ZSuAw19l9wiDzPGkGt7eBp5hjEGOOWRTbCFQQOpU6hoCGxAQAvD_BwE
 
-## Debugging
+You have to fill out some credit card information but its free for up to 1000 uses a day or 20,000 a month so if you intend to test it out then you wont have to worry about it!
+Follow the instructions to get an api key.  Once Google has generated an api key and you have set the credentials to allow use; in ```.env``` add the line ```REACT_APP_GOOGLE_MAPS_APIKEY=YOUR_KEY_HERE```.
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
+5. After getting the tables set ```npm run server``` and ```npm run client``` should get the app loaded up and ready to use.
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+## Navigation
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
+1. Registering / Logging in will log you into your feed. From here the menu button in the top right will be your navigation through the app. ![Header / Menu](Wireframes/Header.png)
+2. ```Home``` is the page with the feed.  
+3. ```Add Location``` is where you will go to mark a location to name and save for public or private use.
+4. ```My notes```  Is yours / the users list of all notes made.  From here you can delete the note made or click on it to move to that note's view. The view area will show you the spot on the map you marked and move to the edit page. 
+5. From the edit page you can change the Title, Description, or the public/private setting.
+Thats it for the majority of this app!
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
+## Developmer Notes
+Currently on the add location page, after you drag the pin to a location you have to add or delete in the ```latitude / longitude``` input fields because of the way the information currently is sent to the reducer. This is the code I plan on fixing first.
 
-## Testing Routes with Postman
+I plan on adding an image upload feature to this app as well.  I've already got some test code in here for uploading an image to Amazon Web Service.
 
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum.
+### ScreenShots
+![Home View](wireframes/HomePageFeed.png)
+![Map Location Creation](wireframes/MaplocationSelector.png)
+![Map Location Creation](wireframes/Maptitledescription.png)
+![My Locations View](wireframes/MyLocationsView.png)
+![Note Details](wireframes/NoteDetails.png)
+![Edit View](wireframes/EditNoteView.png)
 
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
 
-1. Start the server - `npm run server`
-2. [Import the sample routes JSON file](./PostmanPrimeSoloRoutes.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-   1. `POST /api/user/register` registers a new user, see body to change username/password
-   2. `POST /api/user/login` will login a user, see body to change username/password
-   3. `GET /api/user` will get user information, by default it's not very much
+### Built On
+```
+ReactJS
+Redux
+NodeJS
+JavaScript
+Express Library
+Material-UI
+Google Maps API
+PostgreSQL
+```
 
-After running the login route above, you can try any other route you've created that requires a logged in user!
+## Thanks
+I want to thank my instructors Dane Smith and Kris Szafranski for the extreme amount of support and helping teach me the skills to make this app, Prime Academy being there at the right time, and my cohort Rabin (Rah-bean) for their comradery through this program!
 
-## Production Build
-
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
-
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
-
-## Lay of the Land
-
-There are a few videos linked below that show a walkthrough the client and sever setup to help acclimatize to the boilerplate. Please take some time to watch the videos in order to get a better understanding of what the boilerplate is like.
-
-- [Initial Set](https://vimeo.com/453297271)
-- [Server Walkthrough](https://vimeo.com/453297212)
-- [Client Walkthrough](https://vimeo.com/453297124)
-
-Directory Structure:
-
-- `src/` contains the React application
-- `public/` contains static assets for the client-side
-- `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-- `server/` contains the Express App
-
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
-- src/components
-  - App/App
-  - Footer/Footer
-  - Nav/Nav
-  - AboutPage/AboutPage
-  - InfoPage/InfoPage
-  - UserPage/UserPage
-  - LoginPage/LoginPage
-  - RegisterPage/RegisterPage
-  - LogOutButton/LogOutButton
-  - ProtectedRoute/ProtectedRoute
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
