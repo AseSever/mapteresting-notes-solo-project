@@ -23,14 +23,14 @@ Follow the instructions to get an api key.  Once Google has generated an api key
 
 ## Navigation
 
-1. Registering / Logging in will log you into your feed. From here the menu button in the top right will be your navigation through the app. ![Header / Menu](Wireframes/Header.png)
+1. Registering / Logging in will log you into your feed. From here the menu button in the top right will be your navigation through the app. ![Header / Menu](wireframes/Header.png)
 2. ```Home``` is the page with the feed.  
 3. ```Add Location``` is where you will go to mark a location to name and save for public or private use.
 4. ```My notes```  Is yours / the users list of all notes made.  From here you can delete the note made or click on it to move to that note's view. The view area will show you the spot on the map you marked and move to the edit page. 
 5. From the edit page you can change the Title, Description, or the public/private setting.
 Thats it for the majority of this app!
 
-## Developmer Notes
+## Developer Notes
 Currently on the add location page, after you drag the pin to a location you have to add or delete in the ```latitude / longitude``` input fields because of the way the information currently is sent to the reducer. This is the code I plan on fixing first.
 
 I plan on adding an image upload feature to this app as well.  I've already got some test code in here for uploading an image to Amazon Web Service.
